@@ -24,7 +24,7 @@ public class Statistics {
     /**
      * print out each card and the number of times it was drawn
      * loops number of times equal to length of cards drawn array so 10
-     * @param cardsDrawn ,
+     * @param cardsDrawn  ,
      */
     public static void totalCards(int[][] cardsDrawn) {
 
