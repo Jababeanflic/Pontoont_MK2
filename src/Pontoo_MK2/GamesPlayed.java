@@ -25,7 +25,7 @@ public class GamesPlayed {
     }
 
     /**
-     * @param gamesPlayed int number od games played
+     * @param gamesPlayed int number of games played
      * @return boolean true/false ie contiunue or not
      */
     public static boolean playerContinue(int gamesPlayed) {
