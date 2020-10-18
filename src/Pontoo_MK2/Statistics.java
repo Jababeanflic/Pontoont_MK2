@@ -2,7 +2,7 @@ package Pontoo_MK2;
 
 /**
  * Pontoo_MK2
- *
+ * Statistics class claculates to percentage og games one
  * @author 18025316
  * Scott Kinsmnan
  * 17/10/2020

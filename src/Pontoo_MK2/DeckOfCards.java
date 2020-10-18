@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Pontoo_MK2
+ * Pontoon_MK2
  *
  * @author 18025316
  * Scott Kinsmnan
@@ -29,12 +29,12 @@ public class DeckOfCards {
      */
     public DeckOfCards(){
 
-        List<String> suits = Card.getValidSuit();
+        List<Suits> suits = Card.getValidSuit();
         List<String> faceNames = Card.getValidFaceNames();
 
         deck = new ArrayList<>();
 
-        for (String suit:suits){
+        for (Suits suit:suits){
             for (String faceName:faceNames)
                 deck.add(new Card(faceName,suit));
         }

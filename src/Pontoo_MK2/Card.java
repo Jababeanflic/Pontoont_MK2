@@ -13,7 +13,7 @@ import java.util.List;
 public class Card {
 
     private String faceName;
-    private String suit;
+    private Suits suit;
     private int value;
     // private Image image;
 
@@ -22,7 +22,7 @@ public class Card {
      * @param faceName String facename
      * @param suit String suit
      */
-    public Card(String faceName, String suit) {
+    public Card(String faceName, Suits suit) {
         setFaceName(faceName);
         setSuit(suit);
         setValue();
@@ -53,24 +53,25 @@ public class Card {
             throw new IllegalArgumentException("Not a valid face name");
     }
 
-    public String getSuit() {
+    public Suits getSuit() {
         return suit;
     }
 
     /**
      * List of suits
+     * @return Array List String of suits
      */
-    public static List<String> getValidSuit(){
-        return Arrays.asList("hearts","diamonds","spades","clubs");
+    public static List<Suits> getValidSuit(){
+        List<Suits> suits = Arrays.asList(Suits.values());
+        return suits;
     }
 
     /**
      * @param suit String suit
      * Validates and sets suit
      */
-    public void setSuit(String suit) {
-        List<String> validSuits = getValidSuit();
-        suit = suit.toLowerCase();
+    public void setSuit(Suits suit) {
+        List<Suits> validSuits = getValidSuit();
 
         if (validSuits.contains(suit))
             this.suit = suit;
