@@ -41,7 +41,7 @@ public class DeckOfCards {
     }
 
     /**
-     * Deal top card
+     * Deal top card and remove from deck
      */
     public Card drawTopCard(){
         if (deck.size()>0)
@@ -50,12 +50,20 @@ public class DeckOfCards {
             return null;
     }
 
+    /**
+     * @return Card object for player
+     * card is printed to screen
+     */
     public Card drawCardPlayer(){
         Card newCard = drawTopCard();
         System.out.println("You drew "+newCard);
         return newCard;
     }
 
+    /**
+     * @return Card object for dealer
+     * card is not printed to screen
+     */
     public Card drawCardDealer(){
         Card newCard = drawTopCard();
         return newCard;

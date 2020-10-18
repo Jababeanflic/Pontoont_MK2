@@ -9,7 +9,6 @@ import static Pontoo_MK2.GamesPlayed.playerContinue;
  * Pontoon class is the game controller. Instantiates and controls object actions.
  * Give user options and dealer AI reacts accordingly
  * Tracks and updates all objects and statistics
- *
  * @author 18025316
  * Scott Kinsmnan
  * 17/10/2020
@@ -60,7 +59,7 @@ public class Pontoon {
                 while (dealer.getDealerTotal() < player.getPlayerTotal() & dealer.getDealerTotal() <= 21) {
                     dealerCard1 = deck.drawCardDealer();
                     dealer.setHand(dealerCard1);
-                    //dealerTotal = dealerTotal + dealerCard1.getValue();
+
                     if (busted(dealer.getDealerTotal())) {
                         System.out.println("Dealer bust with " + dealer.getDealerTotal() + " you win!");
                         gamesWon++;
@@ -87,7 +86,7 @@ public class Pontoon {
 
             gamesPlayed++;
             gamesCount.playerContinue(gamesPlayed);
-            //GamesPlayed game = new GamesPlayed(playerContinue(gamesPlayed));
+
             /*
              * Choose to play again return True/False
              */
@@ -106,8 +105,9 @@ public class Pontoon {
     }
 
     /**
-     * @param total
-     * @return
+     * @param total int total
+     * @return boolean
+     * If total is over 21 false returned under 21 true
      */
     public static boolean busted(int total) {
         return total > 21;
