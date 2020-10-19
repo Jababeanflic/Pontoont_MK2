@@ -30,12 +30,12 @@ public class DeckOfCards {
     public DeckOfCards(){
 
         List<Suits> suits = Card.getValidSuit();
-        List<String> faceNames = Card.getValidFaceNames();
+        List<FaceNames> faceNames = Card.getValidFaceNames();
 
         deck = new ArrayList<>();
 
         for (Suits suit:suits){
-            for (String faceName:faceNames)
+            for (FaceNames faceName:faceNames)
                 deck.add(new Card(faceName,suit));
         }
     }
