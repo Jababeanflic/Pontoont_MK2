@@ -28,6 +28,7 @@ public class Pontoon {
         do {
             Player player = new Player();
             Dealer dealer = new Dealer();
+            //User dealer = new User();
 
             Card playerCard1 = deck.drawCardPlayer();
             Card playerCard2 = deck.drawCardPlayer();
@@ -46,8 +47,9 @@ public class Pontoon {
                 playerCard1 = deck.drawCardPlayer();
                 player.setHand(playerCard1);
 
-                if (busted(player.getPlayerTotal())) {
-                    System.out.println("Your bust with " + player.getPlayerTotal());
+                if (busted(player.getUserTotal())) {
+                    System.out.println("Your bust with " + player.getUserTotal());
+                    player.UserShout();
                     //Statistics.cardsDrawn(cardsDrawn, totalCardsDrawn);
                     break;
                 }// end if
@@ -55,24 +57,26 @@ public class Pontoon {
                 choice = kboard.nextLine();
             }
 
-            if (player.getPlayerTotal() <= 21) {
-                while (dealer.getDealerTotal() < player.getPlayerTotal() & dealer.getDealerTotal() <= 21) {
+            if (player.getUserTotal() <= 21) {
+                while (dealer.getUserTotal() < player.getUserTotal() & dealer.getUserTotal() <= 21) {
                     dealerCard1 = deck.drawCardDealer();
                     dealer.setHand(dealerCard1);
 
-                    if (busted(dealer.getDealerTotal())) {
-                        System.out.println("Dealer bust with " + dealer.getDealerTotal() + " you win!");
+                    if (busted(dealer.getUserTotal())) {
+                        System.out.println("Dealer bust with " + dealer.getUserTotal() + " you win!");
+                        dealer.UserShout();
                         gamesWon++;
                         break;
                     }
                 }
 
-                if (dealer.getDealerTotal() <= 21) {
-                    if (getResult(player.getPlayerTotal(), dealer.getDealerTotal())) {
-                        System.out.println("You have won with a total of " + player.getPlayerTotal() + " Dealer has " + dealer.getDealerTotal());
+                if (dealer.getUserTotal() <= 21) {
+                    if (getResult(player.getUserTotal(), dealer.getUserTotal())) {
+                        System.out.println("You have won with a total of " + player.getUserTotal() + " Dealer has " + dealer.getUserTotal());
                         gamesWon++; // track games one
                     } else {
-                        System.out.println("You have lost with a total of " + player.getPlayerTotal() + " Dealer has " + dealer.getDealerTotal());
+                        System.out.println("You have lost with a total of " + player.getUserTotal() + " Dealer has " + dealer.getUserTotal());
+                        player.UserShout();
                     }// end if
                 }
             }
@@ -81,11 +85,11 @@ public class Pontoon {
             System.out.println(player.getHand());
             System.out.println("Show dealers hand");
             System.out.println(dealer.getHand());
-            System.out.println("Player Total: " + player.getPlayerTotal());
-            System.out.println("Dealer Total: " + dealer.getDealerTotal());
+            System.out.println("Player Total: " + player.getUserTotal());
+            System.out.println("Dealer Total: " + dealer.getUserTotal());
 
             gamesPlayed++;
-            gamesCount.playerContinue(gamesPlayed);
+            playerContinue(gamesPlayed);
 
             /*
              * Choose to play again return True/False
