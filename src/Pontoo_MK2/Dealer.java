@@ -11,6 +11,8 @@ package Pontoo_MK2;
 
 public class Dealer extends User{
 
+    DeckOfCards Deck = new DeckOfCards();
+
     public Dealer() {
     }
 
@@ -19,6 +21,19 @@ public class Dealer extends User{
      */
     public void UserShout(){
         System.out.println("Dealer Looses well done");
+    }
+
+    /**
+     * @return Card object for player
+     */
+    public Card drawCard(){
+        return Deck.drawTopCard();
+    }
+
+    public Card playerDrawCard(){
+        Card newCard = Deck.drawTopCard();
+        System.out.println("You drew "+newCard);
+        return newCard;
     }
 }
 

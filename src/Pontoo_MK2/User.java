@@ -15,6 +15,7 @@ public abstract class User {
     private ArrayList<Card> hand;
     private int playerTotal;
 
+
     /**
      * Constructor Array List to hold card objects
      */
@@ -30,7 +31,7 @@ public abstract class User {
     }
 
     /**
-     * @param playerCard  Card object
+     * @param playerCard Card object
      * Adds card object to card
      * Add card value to cumulative player total
      */

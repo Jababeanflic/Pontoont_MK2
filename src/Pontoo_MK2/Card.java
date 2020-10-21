@@ -28,6 +28,10 @@ public class Card {
         setValueEnum();
     }
 
+    public Card() {
+
+    }
+
     public FaceNames getFaceName() {
         return faceName;
     }
@@ -36,7 +40,7 @@ public class Card {
      * List of face names
      * @return
      */
-    public static List<FaceNames> getValidFaceNames(){
+    public List<FaceNames> getValidFaceNames(){
         return Arrays.asList(FaceNames.values());
     }
 
@@ -56,7 +60,7 @@ public class Card {
      * List of suits
      * @return Array List String of suits
      */
-    public static List<Suits> getValidSuit(){
+    public List<Suits> getValidSuit(){
         return Arrays.asList(Suits.values());
     }
 

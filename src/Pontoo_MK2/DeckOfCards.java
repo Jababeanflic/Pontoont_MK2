@@ -15,6 +15,7 @@ public class DeckOfCards {
 
     private ArrayList<Card> deck;
     // private Image backOfCardImage;
+    Card nCard = new Card();
 
     /**
      * This passes in a specific collection of cards
@@ -29,8 +30,8 @@ public class DeckOfCards {
      */
     public DeckOfCards(){
 
-        List<Suits> suits = Card.getValidSuit();
-        List<FaceNames> faceNames = Card.getValidFaceNames();
+        List<Suits> suits = nCard.getValidSuit();
+        List<FaceNames> faceNames = nCard.getValidFaceNames();
 
         deck = new ArrayList<>();
 
@@ -38,6 +39,7 @@ public class DeckOfCards {
             for (FaceNames faceName:faceNames)
                 deck.add(new Card(faceName,suit));
         }
+        Collections.shuffle(deck);
     }
 
     /**
@@ -51,28 +53,10 @@ public class DeckOfCards {
     }
 
     /**
-     * @return Card object for player
-     * card is printed to screen
-     */
-    public Card drawCardPlayer(){
-        Card newCard = drawTopCard();
-        System.out.println("You drew "+newCard);
-        return newCard;
-    }
-
-    /**
-     * @return Card object for dealer
-     * card is not printed to screen
-     */
-    public Card drawCardDealer(){
-        Card newCard = drawTopCard();
-        return newCard;
-    }
-
-    /**
      * Shuffle deck of cards
      */
     public void shuffle(){
         Collections.shuffle(deck);
     }
-}
+}// end class
+
