@@ -5,6 +5,7 @@ package Pontoo_MK2;
  * Pontoon class is the game controller. Instantiates and controls object actions.
  * Give user options and dealer AI reacts accordingly
  * Tracks and updates all objects and statistics
+ *
  * @author 18025316
  * Scott Kinsmnan
  * 17/10/2020
@@ -45,8 +46,7 @@ public class Pontoon {
 
         } while (PlayGame);
 
-
-         // calculate win percent pass gamesWon and games played total
+        // calculate win percent pass gamesWon and games played total
         Statistics.statistic(gamesWon, gamesPlayed);
     }
 
@@ -56,6 +56,4 @@ public class Pontoon {
         dealer.setHand(dealer.drawCard());
         dealer.setHand(dealer.drawCard());
     }
-
-
 }
