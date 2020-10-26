@@ -3,7 +3,7 @@ package Pontoo_MK2;
 /**
  * Pontoo_MK2
  * @author 18025316
- * Scott Kinsmnan
+ * Scott Kinsmnan,
  * 17/10/2020
  */
 
@@ -21,7 +21,6 @@ public class PlayerTurn extends TurnController {
 
             if (busted(player.getUserTotal())) {
                 System.out.println( player.getName()+" is bust with " + player.getUserTotal());
-                player.UserShout();
                 //Statistics.cardsDrawn(cardsDrawn, totalCardsDrawn);
                 break;
             }// end if
