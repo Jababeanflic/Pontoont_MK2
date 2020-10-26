@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class GamesPlayed {
 
-    private static boolean playGame;
+    private boolean playGame;
 
     public GamesPlayed() {
     }
@@ -28,7 +28,7 @@ public class GamesPlayed {
      * @param gamesPlayed int number of games played
      * @return boolean true/false ie contiunue or not
      */
-    public static boolean playerContinue(int gamesPlayed) {
+    public boolean playerContinue(int gamesPlayed) {
 
         if (gamesPlayed < 5) {
             Scanner kboard = new Scanner(System.in);

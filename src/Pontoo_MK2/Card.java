@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Card {
 
-    private String faceName;
+    private FaceNames faceName;
     private Suits suit;
     private int value;
     // private Image image;
@@ -22,35 +22,34 @@ public class Card {
      * @param faceName String facename
      * @param suit String suit
      */
-    public Card(String faceName, Suits suit) {
+    public Card(FaceNames faceName, Suits suit) {
         setFaceName(faceName);
         setSuit(suit);
-        setValue();
+        setValueEnum();
     }
 
-    public String getFaceName() {
+    public Card() {
+
+    }
+
+    public FaceNames getFaceName() {
         return faceName;
     }
 
     /**
      * List of face names
+     * @return
      */
-    public static List<String> getValidFaceNames(){
-        return Arrays.asList("2","3","4","5","6","7","8","9","10","jack","queen","king","ace");
+    public List<FaceNames> getValidFaceNames(){
+        return Arrays.asList(FaceNames.values());
     }
 
     /**
      * @param faceName valid face names
      * validates and sets facename
      */
-    public void setFaceName(String faceName) {
-        List<String> validFaceNames = getValidFaceNames();
-        faceName = faceName.toLowerCase();
-
-        if (validFaceNames.contains(faceName))
+    public void setFaceName(FaceNames faceName) {
             this.faceName = faceName;
-        else
-            throw new IllegalArgumentException("Not a valid face name");
     }
 
     public Suits getSuit() {
@@ -61,9 +60,8 @@ public class Card {
      * List of suits
      * @return Array List String of suits
      */
-    public static List<Suits> getValidSuit(){
-        List<Suits> suits = Arrays.asList(Suits.values());
-        return suits;
+    public List<Suits> getValidSuit(){
+        return Arrays.asList(Suits.values());
     }
 
     /**
@@ -86,16 +84,12 @@ public class Card {
     /**
      * Sets a value depending on face name
      * Parses any String numbers to ints or converts named cars to correct value
+     * @param
      */
-    public void setValue() {
-
-        if (faceName.equals("jack")||faceName.equals("queen")||faceName.equals("king")||faceName.equals("ace")) {
-            value = 10;
-            if (faceName.equals("ace"))
-                value = 11;
-        }
-        else
-            value = Integer.parseInt(faceName);
+    public void setValueEnum(){
+        String face = faceName.toString();
+        FaceNames f = FaceNames.valueOf(face);
+        value = f.getValue();
     }
 
     /**

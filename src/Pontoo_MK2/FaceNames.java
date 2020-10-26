@@ -15,15 +15,13 @@ public enum FaceNames {
     king(10),
     ace(11);
 
-    FaceNames(int i) {
+    private int value;
+
+    FaceNames(int valueCard) {
+        value = valueCard;
     }
 
-    FaceNames(FaceNames faceName,int i) {
-
+    public int getValue() {
+        return value;
     }
-
-    FaceNames() {
-    }
-
-
 }

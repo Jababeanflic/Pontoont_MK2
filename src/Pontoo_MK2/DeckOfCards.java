@@ -13,8 +13,7 @@ import java.util.List;
  */
 public class DeckOfCards {
 
-    private ArrayList<Card> deck;
-    // private Image backOfCardImage;
+    private final ArrayList<Card> deck;
 
     /**
      * This passes in a specific collection of cards
@@ -29,15 +28,18 @@ public class DeckOfCards {
      */
     public DeckOfCards(){
 
-        List<Suits> suits = Card.getValidSuit();
-        List<String> faceNames = Card.getValidFaceNames();
+        // private Image backOfCardImage;
+        Card nCard = new Card();
+        List<Suits> suits = nCard.getValidSuit();
+        List<FaceNames> faceNames = nCard.getValidFaceNames();
 
         deck = new ArrayList<>();
 
         for (Suits suit:suits){
-            for (String faceName:faceNames)
+            for (FaceNames faceName:faceNames)
                 deck.add(new Card(faceName,suit));
         }
+        Collections.shuffle(deck);
     }
 
     /**
@@ -51,28 +53,10 @@ public class DeckOfCards {
     }
 
     /**
-     * @return Card object for player
-     * card is printed to screen
-     */
-    public Card drawCardPlayer(){
-        Card newCard = drawTopCard();
-        System.out.println("You drew "+newCard);
-        return newCard;
-    }
-
-    /**
-     * @return Card object for dealer
-     * card is not printed to screen
-     */
-    public Card drawCardDealer(){
-        Card newCard = drawTopCard();
-        return newCard;
-    }
-
-    /**
      * Shuffle deck of cards
      */
     public void shuffle(){
         Collections.shuffle(deck);
     }
-}
+}// end class
+

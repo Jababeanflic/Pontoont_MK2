@@ -2,13 +2,12 @@ package Pontoo_MK2;
 
 import java.util.Scanner;
 
-import static Pontoo_MK2.GamesPlayed.playerContinue;
-
 /**
  * Pontoo_MK2
  * Pontoon class is the game controller. Instantiates and controls object actions.
  * Give user options and dealer AI reacts accordingly
  * Tracks and updates all objects and statistics
+ *
  * @author 18025316
  * Scott Kinsmnan
  * 17/10/2020
@@ -16,100 +15,54 @@ import static Pontoo_MK2.GamesPlayed.playerContinue;
 public class Pontoon {
 
     public Pontoon() {
+
         Scanner kboard = new Scanner(System.in);
-        DeckOfCards deck = new DeckOfCards();
         GamesPlayed gamesCount = new GamesPlayed();
-        deck.shuffle();
+        Statistics stats = new Statistics();
 
-        int gamesPlayed = 0;
         boolean PlayGame;
-        int gamesWon = 0;
 
+        System.out.println("What is your name?");
+        String pName = kboard.nextLine();
+
+        int gamesWon = 0;
+        int gamesPlayed = 0;
         do {
-            Player player = new Player();
+
+            Player player = new Player(pName);
+            System.out.println("Lets play pontoon "+player.getName());
             Dealer dealer = new Dealer();
 
-            Card playerCard1 = deck.drawCardPlayer();
-            Card playerCard2 = deck.drawCardPlayer();
-            player.setHand(playerCard1);
-            player.setHand(playerCard2);
+            setIntialHand(player, dealer);
 
-            Card dealerCard1 = deck.drawCardDealer();
-            Card dealerCard2 = deck.drawCardDealer();
-            dealer.setHand(dealerCard1);
-            dealer.setHand(dealerCard2);
+            DealerTurn nDealerTurn = new DealerTurn();
+            PlayerTurn nPlayerTurn = new PlayerTurn();
+            gamesWon = nPlayerTurn.PlayerTurn(player, dealer, gamesWon);
+            gamesWon = nDealerTurn.DealerTurn(player, dealer, gamesWon);
 
-            System.out.println("Would you like to draw a card? y/n");
-            String choice = kboard.nextLine();
-
-            while (choice.equalsIgnoreCase("y")) {
-                playerCard1 = deck.drawCardPlayer();
-                player.setHand(playerCard1);
-
-                if (busted(player.getPlayerTotal())) {
-                    System.out.println("Your bust with " + player.getPlayerTotal());
-                    //Statistics.cardsDrawn(cardsDrawn, totalCardsDrawn);
-                    break;
-                }// end if
-                System.out.println("Would you like to draw a card? y/n");
-                choice = kboard.nextLine();
-            }
-
-            if (player.getPlayerTotal() <= 21) {
-                while (dealer.getDealerTotal() < player.getPlayerTotal() & dealer.getDealerTotal() <= 21) {
-                    dealerCard1 = deck.drawCardDealer();
-                    dealer.setHand(dealerCard1);
-
-                    if (busted(dealer.getDealerTotal())) {
-                        System.out.println("Dealer bust with " + dealer.getDealerTotal() + " you win!");
-                        gamesWon++;
-                        break;
-                    }
-                }
-
-                if (dealer.getDealerTotal() <= 21) {
-                    if (getResult(player.getPlayerTotal(), dealer.getDealerTotal())) {
-                        System.out.println("You have won with a total of " + player.getPlayerTotal() + " Dealer has " + dealer.getDealerTotal());
-                        gamesWon++; // track games one
-                    } else {
-                        System.out.println("You have lost with a total of " + player.getPlayerTotal() + " Dealer has " + dealer.getDealerTotal());
-                    }// end if
-                }
-            }
-
-            System.out.println("Show players hand");
+            System.out.println("Show " +player.getName()+ "'s hand");
             System.out.println(player.getHand());
             System.out.println("Show dealers hand");
             System.out.println(dealer.getHand());
-            System.out.println("Player Total: " + player.getPlayerTotal());
-            System.out.println("Dealer Total: " + dealer.getDealerTotal());
+            System.out.println(player.getName()+",s Total: " + player.getUserTotal());
+            System.out.println("Dealer Total: " + dealer.getUserTotal());
 
             gamesPlayed++;
             gamesCount.playerContinue(gamesPlayed);
 
-            /*
-             * Choose to play again return True/False
-             */
+            // Choose to play again return True/False
             PlayGame = gamesCount.getPlayGame();
 
         } while (PlayGame);
 
-        /*
-         * calculate win percent pass gamesWon and games played total
-         */
-        Statistics.statistic(gamesWon, gamesPlayed);
+        // calculate win percent pass gamesWon and games played total
+        stats.statistic(gamesWon, gamesPlayed);
     }
 
-    public static boolean getResult(int total, int dealer) {
-        return total > dealer && total <= 21;
+    public void setIntialHand(Player player, Dealer dealer) {
+        player.setHand(dealer.playerDrawCard());
+        player.setHand(dealer.playerDrawCard());
+        dealer.setHand(dealer.drawCard());
+        dealer.setHand(dealer.drawCard());
     }
-
-    /**
-     * @param total int total
-     * @return boolean
-     * If total is over 21 false returned under 21 true
-     */
-    public static boolean busted(int total) {
-        return total > 21;
-    }
-}
+}// push test
