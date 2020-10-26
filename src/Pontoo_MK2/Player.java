@@ -10,7 +10,14 @@ package Pontoo_MK2;
  */
 public class Player extends User {
 
-    public Player() {
+    private String Name;
+
+    public Player(String pName) {
+        this.Name = pName;
+    }
+
+    public String getName() {
+        return Name;
     }
 
     /**

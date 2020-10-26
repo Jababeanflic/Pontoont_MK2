@@ -1,5 +1,7 @@
 package Pontoo_MK2;
 
+import java.util.Scanner;
+
 /**
  * Pontoo_MK2
  * Pontoon class is the game controller. Instantiates and controls object actions.
@@ -12,16 +14,24 @@ package Pontoo_MK2;
  */
 public class Pontoon {
 
-    GamesPlayed gamesCount = new GamesPlayed();
     int gamesPlayed = 0;
     int gamesWon = 0;
 
     public Pontoon() {
 
+        Scanner kboard = new Scanner(System.in);
+        GamesPlayed gamesCount = new GamesPlayed();
+        Statistics stats = new Statistics();
+
         boolean PlayGame;
 
+        System.out.println("What is your name?");
+        String pName = kboard.nextLine();
+
         do {
-            Player player = new Player();
+
+            Player player = new Player(pName);
+            System.out.println("Lets play pontoon "+player.getName());
             Dealer dealer = new Dealer();
 
             setIntialHand(player, dealer);
@@ -31,11 +41,11 @@ public class Pontoon {
             gamesWon = nPlayerTurn.PlayerTurn(player, dealer, gamesWon);
             gamesWon = nDealerTurn.DealerTurn(player, dealer, gamesWon);
 
-            System.out.println("Show players hand");
+            System.out.println("Show " +player.getName()+ "'s hand");
             System.out.println(player.getHand());
             System.out.println("Show dealers hand");
             System.out.println(dealer.getHand());
-            System.out.println("Player Total: " + player.getUserTotal());
+            System.out.println(player.getName()+",s Total: " + player.getUserTotal());
             System.out.println("Dealer Total: " + dealer.getUserTotal());
 
             gamesPlayed++;
@@ -47,7 +57,7 @@ public class Pontoon {
         } while (PlayGame);
 
         // calculate win percent pass gamesWon and games played total
-        Statistics.statistic(gamesWon, gamesPlayed);
+        stats.statistic(gamesWon, gamesPlayed);
     }
 
     public void setIntialHand(Player player, Dealer dealer) {

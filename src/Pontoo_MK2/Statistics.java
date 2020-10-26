@@ -13,7 +13,7 @@ public class Statistics {
      * @param gamesWon ,
      * @param gamesPlayed ,
      */
-    public static void statistic(int gamesWon, int gamesPlayed) { // Method to calculate win percent
+    public void statistic(int gamesWon, int gamesPlayed) { // Method to calculate win percent
 
         System.out.println("Games played: " + gamesPlayed);
         System.out.println("Games won: " + gamesWon);

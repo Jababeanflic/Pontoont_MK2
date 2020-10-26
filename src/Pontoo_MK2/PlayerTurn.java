@@ -13,19 +13,19 @@ public class PlayerTurn extends TurnController {
     }
 
     public int PlayerTurn(Player player, Dealer dealer, int gamesWon){
-        System.out.println("Would you like to draw a card? y/n");
+        System.out.println("Would you like to draw a card "+player.getName()+"? y/n");
         String choice = kboard.nextLine();
 
         while (choice.equalsIgnoreCase("y")) {
             player.setHand(dealer.playerDrawCard());
 
             if (busted(player.getUserTotal())) {
-                System.out.println("Your bust with " + player.getUserTotal());
+                System.out.println( player.getName()+" is bust with " + player.getUserTotal());
                 player.UserShout();
                 //Statistics.cardsDrawn(cardsDrawn, totalCardsDrawn);
                 break;
             }// end if
-            System.out.println("Would you like to draw a card? y/n");
+            System.out.println("Would you like to draw a card "+player.getName()+ "? y/n");
             choice = kboard.nextLine();
         } return gamesWon;
     }
