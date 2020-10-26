@@ -33,7 +33,7 @@ public class Pontoon {
             System.out.println("Lets play pontoon "+player.getName());
             Dealer dealer = new Dealer();
 
-            setIntialHand(player, dealer);
+            setInitialHand(player, dealer);
 
             DealerTurn nDealerTurn = new DealerTurn();
             PlayerTurn nPlayerTurn = new PlayerTurn();
@@ -59,10 +59,10 @@ public class Pontoon {
         stats.statistic(gamesWon, gamesPlayed);
     }
 
-    public void setIntialHand(Player player, Dealer dealer) {
+    public void setInitialHand(Player player, Dealer dealer) {
         player.setHand(dealer.playerDrawCard());
         player.setHand(dealer.playerDrawCard());
         dealer.setHand(dealer.drawCard());
         dealer.setHand(dealer.drawCard());
     }
-}// push test
+}// push test 2 Master
