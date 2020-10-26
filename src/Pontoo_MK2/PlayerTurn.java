@@ -21,7 +21,6 @@ public class PlayerTurn extends TurnController {
 
             if (busted(player.getUserTotal())) {
                 System.out.println( player.getName()+" is bust with " + player.getUserTotal());
-                player.UserShout();
                 //Statistics.cardsDrawn(cardsDrawn, totalCardsDrawn);
                 break;
             }// end if
