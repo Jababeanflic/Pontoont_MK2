@@ -11,7 +11,7 @@ package Pontoo_MK2;
 
 public class Dealer extends User{
 
-    DeckOfCards Deck = new DeckOfCards();
+    private final DeckOfCards Deck = new DeckOfCards();
 
     public Dealer() {
     }

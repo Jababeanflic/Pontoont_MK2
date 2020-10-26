@@ -13,9 +13,7 @@ import java.util.List;
  */
 public class DeckOfCards {
 
-    private ArrayList<Card> deck;
-    // private Image backOfCardImage;
-    Card nCard = new Card();
+    private final ArrayList<Card> deck;
 
     /**
      * This passes in a specific collection of cards
@@ -30,6 +28,8 @@ public class DeckOfCards {
      */
     public DeckOfCards(){
 
+        // private Image backOfCardImage;
+        Card nCard = new Card();
         List<Suits> suits = nCard.getValidSuit();
         List<FaceNames> faceNames = nCard.getValidFaceNames();
 

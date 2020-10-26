@@ -14,9 +14,6 @@ import java.util.Scanner;
  */
 public class Pontoon {
 
-    int gamesPlayed = 0;
-    int gamesWon = 0;
-
     public Pontoon() {
 
         Scanner kboard = new Scanner(System.in);
@@ -28,6 +25,8 @@ public class Pontoon {
         System.out.println("What is your name?");
         String pName = kboard.nextLine();
 
+        int gamesWon = 0;
+        int gamesPlayed = 0;
         do {
 
             Player player = new Player(pName);
